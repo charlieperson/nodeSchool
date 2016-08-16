@@ -1,13 +1,10 @@
-var mod = require('./makeItModular');
+var mod = require('./extensionFilter');
+var dir = process.argv[2];
+var ext = process.argv[3];
 
-
-
-mod(process.argv[2], process.argv[3], function(err, array) {
-  if(err) {
-    throw err;
-  } else {
-    array.forEach(function(item){
-      console.log(item);
-    });
-  }
+mod(dir, ext, function(err, array) {
+  if(err) return console.error(err);
+  array.forEach(function(item){
+    console.log(item);
+  });
 });
