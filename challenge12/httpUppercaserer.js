@@ -1,14 +1,10 @@
 var http = require('http');
+var map = require('through2-map');
 
 var server = http.createServer(function(req, res) {
-  var buffers = [];
-  req.on('data', function(data) {
-    buffers.push(data);
-  });
-  req.on('end', function() {
-    var buffer = Buffer.concat(buffers);
-    res.write(buffer.toString().toUpperCase());
-  });
+  req.pipe(map(function(chunk){
+    return chunk.toString().toUpperCase();
+  })).pipe(res);
 });
 
 server.listen(process.argv[2], function() {
