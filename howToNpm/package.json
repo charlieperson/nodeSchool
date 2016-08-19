@@ -1,14 +1,21 @@
 {
-  "name": "howtonpm",
-  "version": "1.0.0",
+  "name": "@charlieperson/howtonpm",
+  "version": "1.0.5",
   "description": "nodeschool npm tutorial",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charlieperson/nodeSchool.git"
+  },
   "scripts": {
     "test": "node test.js"
   },
   "author": "charlie person",
   "license": "ISC",
-  "dependencies": {
-    "@linclark/pkg": "^1.0.2"
-  }
+  "dependencies": {},
+  "bugs": {
+    "url": "https://github.com/charlieperson/nodeSchool/issues"
+  },
+  "homepage": "https://github.com/charlieperson/nodeSchool#readme",
+  "devDependencies": {}
 }
