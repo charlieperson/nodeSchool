@@ -1,18 +1,17 @@
-LOW=$1
-HIGH=$2
-COUNT=0
-switch=false
-
-main () {
-  if [ $switch == false ]; then echo $FUNCNAME; switch=true; fi;
-  if [[ $LOW == $HIGH ]]; then return 0; fi;
-  if [[ $(( $LOW % 2)) == 0 ]]; then
-    line=`printf "%${COUNT}s" |tr " " " "`
-    echo "$line $LOW" ;
-    (( COUNT++ ))
-  fi;
-  (( LOW++ ))
-  main $LOW $HIGH
+recurse () {
+  indent=$3
+  if [[ $1 == $2 ]]; then return 0; fi;
+  if [[ $(( $1 % 2)) == 0 ]]; then
+    line=`printf "%${indent}s" |tr " " " "`
+    echo "$line $1";
+    (( indent++ ))
+  fi
+  recurse $(( $1 + 1 )) $2 $indent
 }
 
-main $LOW $HIGH
+main() {
+  echo $FUNCNAME
+  recurse $1 $2 0
+}
+
+main $1 $2
