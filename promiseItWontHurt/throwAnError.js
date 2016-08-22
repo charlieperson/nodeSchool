@@ -9,4 +9,5 @@ function parsePromised(json) {
 }
 
 parsePromised(process.argv[2])
-.then(console.log, console.log);
+.then(console.log)
+.catch(console.log);
